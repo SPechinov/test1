@@ -1,8 +1,8 @@
-import {ChangeEventHandler, FC, FormEventHandler, useState} from "react";
-import { Props } from './types.ts';
+import { ChangeEventHandler, FC, FormEventHandler, useState } from "react";
+import { Props } from "./types.ts";
 
 export const Form: FC<Props> = ({ onSubmit }) => {
-    const [value, setValue] = useState('');
+    const [value, setValue] = useState("");
 
     const handleTextarea: ChangeEventHandler<HTMLTextAreaElement> = (event) => {
         setValue(event.target.value);
@@ -14,7 +14,7 @@ export const Form: FC<Props> = ({ onSubmit }) => {
     };
 
     const handleClear = () => {
-        setValue('');
+        setValue("");
     };
 
     return (

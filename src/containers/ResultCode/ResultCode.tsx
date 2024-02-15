@@ -1,5 +1,5 @@
-import {FC, useEffect, useRef} from "react";
-import { Props } from './types.ts';
+import { FC, useEffect, useRef } from "react";
+import { Props } from "./types.ts";
 
 export const ResultCode: FC<Props> = ({ code }) => {
     const frameRef = useRef<HTMLDivElement>(null);
