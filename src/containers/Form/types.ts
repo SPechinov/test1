@@ -1,3 +1,3 @@
 export type Props = {
-    onSubmit: (value: string) => void;
-}
+  onSubmit: (value: string) => void;
+};

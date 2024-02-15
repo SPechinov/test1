@@ -4,14 +4,14 @@ import { useState } from "react";
 import { ResultCode } from "./containers/ResultCode";
 
 function App() {
-    const [code, setCode] = useState('');
+  const [code, setCode] = useState("");
 
-    return (
-        <>
-            <Form onSubmit={setCode} />
-            <ResultCode code={code} />
-        </>
-    );
+  return (
+    <>
+      <Form onSubmit={setCode} />
+      <ResultCode code={code} />
+    </>
+  );
 }
 
-export default App
+export default App;
