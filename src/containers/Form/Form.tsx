@@ -15,6 +15,7 @@ export const Form: FC<Props> = ({ onSubmit }) => {
 
   const handleClear = () => {
     setValue("");
+    onSubmit("");
   };
 
   return (
