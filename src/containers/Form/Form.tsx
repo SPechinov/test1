@@ -1,5 +1,6 @@
 import { ChangeEventHandler, FC, FormEventHandler, useState } from "react";
 import { Props } from "./types.ts";
+import { EXAMPLE_CODE } from "./constants.ts";
 
 export const Form: FC<Props> = ({ onSubmit }) => {
   const [value, setValue] = useState("");
@@ -18,6 +19,10 @@ export const Form: FC<Props> = ({ onSubmit }) => {
     onSubmit("");
   };
 
+  const handleExample = () => {
+    setValue(EXAMPLE_CODE);
+  };
+
   return (
     <form className="w-full" onSubmit={handleSubmit}>
       <textarea
@@ -26,7 +31,14 @@ export const Form: FC<Props> = ({ onSubmit }) => {
         placeholder="Insert HTML code"
         className="p-4 w-full resize-y rounded-2xl min-h-52"
       />
-      <div className="flex justify-end mt-4">
+      <div className="flex mt-4">
+        <button
+          type="button"
+          className="px-8 py-4 rounded-lg bg-green-700 text-white hover:bg-cyan-950 mr-auto"
+          onClick={handleExample}
+        >
+          Example
+        </button>
         <button
           type="button"
           className="px-8 py-4 rounded-lg bg-gray-800 text-white hover:bg-cyan-950"
