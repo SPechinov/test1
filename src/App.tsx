@@ -8,6 +8,7 @@ function App() {
 
   return (
     <>
+      <h1 className="text-3xl underline mb-12">Coder</h1>
       <Form onSubmit={setCode} />
       <ResultCode code={code} />
     </>
