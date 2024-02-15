@@ -48,7 +48,7 @@ export const Form: FC<Props> = ({ onSubmit }) => {
         </button>
         <button
           type="submit"
-          className="px-8 py-4 rounded-lg bg-cyan-800 text-white disabled:bg-gray-500 hover:bg-cyan-950 ml-2"
+          className="px-8 py-4 rounded-lg bg-cyan-800 text-white hover:bg-cyan-950 ml-2"
         >
           APPLY
         </button>
