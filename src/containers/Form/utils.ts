@@ -56,6 +56,7 @@ const returnText = (code: string) => {
     tagInfo: { tag: "", fullTag: "", id: generateId() },
     content: code,
     codeLeft: "",
+    startPosition: 0,
   };
 };
 
@@ -100,6 +101,7 @@ const findFirstGroupTag = (code: string): GroupInfo => {
       tagClosedGroup.startPosition,
     ),
     codeLeft: code.slice(tagClosedGroup.endPosition + 1),
+    startPosition: tagOpenedGroup.startPosition,
   };
 };
 
@@ -110,6 +112,14 @@ const getFirstLevelGroups = (code: string): ThreeElement[] => {
   while (leftCode.length) {
     const group = findFirstGroupTag(leftCode);
     leftCode = group.codeLeft;
+
+    if (group.startPosition > 0) {
+      result.push({
+        tagInfo: { tag: "", fullTag: "", id: generateId() },
+        content: code.slice(0, group.startPosition),
+        children: [],
+      });
+    }
 
     result.push({
       tagInfo: group.tagInfo,

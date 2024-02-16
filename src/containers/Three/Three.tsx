@@ -18,7 +18,7 @@ export const Three: FC<Props> = ({ three: threeProps }) => {
           }
 
           return (
-            <p className="px-2" key={threeItem.tagInfo.id}>
+            <p className="px-2 text-left" key={threeItem.tagInfo.id}>
               {threeItem.content}
             </p>
           );

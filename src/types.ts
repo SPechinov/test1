@@ -14,4 +14,5 @@ export type GroupInfo = {
   tagInfo: TagInfo;
   content: string;
   codeLeft: string;
+  startPosition: number;
 };
