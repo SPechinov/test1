@@ -1,6 +1,7 @@
 import { ChangeEventHandler, FC, FormEventHandler, useState } from "react";
-import { Props } from "./types.ts";
-import { EXAMPLE_CODE } from "./constants.ts";
+import { Props } from "./types";
+import { EXAMPLE_CODE } from "./constants";
+import { codeToThree } from "./utils";
 
 export const Form: FC<Props> = ({ onSubmit }) => {
   const [value, setValue] = useState("");
@@ -11,12 +12,12 @@ export const Form: FC<Props> = ({ onSubmit }) => {
 
   const handleSubmit: FormEventHandler<HTMLFormElement> = (event) => {
     event.preventDefault();
-    onSubmit(value);
+    onSubmit(codeToThree(value));
   };
 
   const handleClear = () => {
     setValue("");
-    onSubmit("");
+    onSubmit([]);
   };
 
   const handleExample = () => {

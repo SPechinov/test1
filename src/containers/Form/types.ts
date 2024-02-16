@@ -1,3 +1,5 @@
+import { ThreeElement } from "../../types.ts";
+
 export type Props = {
-  onSubmit: (value: string) => void;
+  onSubmit: (value: ThreeElement[]) => void;
 };
