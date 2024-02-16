@@ -8,17 +8,17 @@ export const Three: FC<Props> = ({ three: threeProps }) => {
   const render = (three: ThreeElement[]) => {
     return (
       <>
-        {three.map((threeItem, index) => {
+        {three.map((threeItem) => {
           if (threeItem.tagInfo.tag) {
             return (
-              <Accordion key={index} tagInfo={threeItem.tagInfo}>
+              <Accordion key={threeItem.tagInfo.id} tagInfo={threeItem.tagInfo}>
                 {render(threeItem.children)}
               </Accordion>
             );
           }
 
           return (
-            <p className="px-2" key={index}>
+            <p className="px-2" key={threeItem.tagInfo.id}>
               {threeItem.content}
             </p>
           );

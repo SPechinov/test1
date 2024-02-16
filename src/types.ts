@@ -7,6 +7,7 @@ export type ThreeElement = {
 export type TagInfo = {
   tag: string;
   fullTag: string;
+  id: number;
 };
 
 export type GroupInfo = {

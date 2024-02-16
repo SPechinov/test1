@@ -1,5 +1,10 @@
 import { ThreeElement, TagInfo, GroupInfo } from "../../types";
 
+const generateId = (() => {
+  let index = 0;
+  return () => index++;
+})();
+
 const getTagInfo = (code: string): TagInfo => {
   const sliced = code.split(" ");
 
@@ -14,6 +19,7 @@ const getTagInfo = (code: string): TagInfo => {
   })();
 
   return {
+    id: generateId(),
     tag,
     fullTag: code,
   };
@@ -45,15 +51,17 @@ const findFirstTag = (
   };
 };
 
-const findFirstGroupTag = (code: string): GroupInfo => {
-  const textResult: GroupInfo = {
-    tagInfo: { tag: "", fullTag: "" },
+const returnText = (code: string) => {
+  return {
+    tagInfo: { tag: "", fullTag: "", id: generateId() },
     content: code,
     codeLeft: "",
   };
+};
 
+const findFirstGroupTag = (code: string): GroupInfo => {
   const tagOpenedGroup = findFirstTag(code, 0, true);
-  if (!tagOpenedGroup) return textResult;
+  if (!tagOpenedGroup) return returnText(code);
 
   let tagClosedGroup: ReturnType<typeof findFirstTag> = null;
 
@@ -61,12 +69,12 @@ const findFirstGroupTag = (code: string): GroupInfo => {
   let cursor = tagOpenedGroup.endPosition;
 
   while (deep > 0) {
-    if (cursor > code.length) return textResult;
+    if (cursor > code.length) return returnText(code);
 
     const openTag = findFirstTag(code, cursor, true, tagOpenedGroup.info.tag);
     const closeTag = findFirstTag(code, cursor, false, tagOpenedGroup.info.tag);
 
-    if (!closeTag) return textResult;
+    if (!closeTag) return returnText(code);
 
     if (!openTag || openTag.startPosition > closeTag.startPosition) {
       cursor = closeTag.endPosition;
@@ -80,9 +88,10 @@ const findFirstGroupTag = (code: string): GroupInfo => {
     }
   }
 
-  if (!tagOpenedGroup || !tagClosedGroup) return textResult;
+  if (!tagOpenedGroup || !tagClosedGroup) return returnText(code);
 
-  if (tagOpenedGroup.info.tag !== tagClosedGroup.info.tag) return textResult;
+  if (tagOpenedGroup.info.tag !== tagClosedGroup.info.tag)
+    return returnText(code);
 
   return {
     tagInfo: tagOpenedGroup.info,
