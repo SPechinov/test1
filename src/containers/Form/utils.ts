@@ -114,6 +114,7 @@ const getFirstLevelGroups = (code: string): ThreeElement[] => {
     const group = findFirstGroupTag(timmedCode);
     leftCode = group.codeLeft;
 
+    // Если перед тегом был текст, добавляем в дерево
     if (group.startPosition > 0) {
       result.push({
         tagInfo: { tag: "", fullTag: "", id: generateId() },
