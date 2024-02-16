@@ -1,16 +1,15 @@
 import "./App.css";
 import { Form } from "./containers/Form";
 import { useState } from "react";
-import { ResultCode } from "./containers/ResultCode";
+import { ThreeElement } from "./types";
 
 function App() {
-  const [code, setCode] = useState("");
+  const [code, setCode] = useState<ThreeElement[]>([]);
 
   return (
     <>
       <h1 className="text-3xl underline mb-12">Coder</h1>
       <Form onSubmit={setCode} />
-      <ResultCode code={code} />
     </>
   );
 }
