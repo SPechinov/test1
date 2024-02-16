@@ -110,13 +110,14 @@ const getFirstLevelGroups = (code: string): ThreeElement[] => {
   let leftCode: string = code;
 
   while (leftCode.length) {
-    const group = findFirstGroupTag(leftCode);
+    const timmedCode = leftCode.trim();
+    const group = findFirstGroupTag(timmedCode);
     leftCode = group.codeLeft;
 
     if (group.startPosition > 0) {
       result.push({
         tagInfo: { tag: "", fullTag: "", id: generateId() },
-        content: code.slice(0, group.startPosition),
+        content: timmedCode.slice(0, group.startPosition),
         children: [],
       });
     }
